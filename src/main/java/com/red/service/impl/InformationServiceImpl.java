@@ -32,12 +32,14 @@ public class InformationServiceImpl implements InformationService {
 
     //查询相关页码的相应数量的资讯
     @Override
-    public InformationPageInfo getInformationByPage(Integer page) {
-        Page<Information> informationPage = iMapper.selectPage(new Page<>(page, 8), null);
+    public InformationPageInfo getInformationByPage(Integer page,Integer size) {
+        Page<Information> informationPage = iMapper.selectPage(
+                new Page<>(page, size), null
+        );
         InformationPageInfo infoPageInfo = new InformationPageInfo();
         infoPageInfo.setCurrent(page);
         infoPageInfo.setInfoList(informationPage.getRecords());
-        infoPageInfo.setSize(8);
+        infoPageInfo.setSize(size);
         infoPageInfo.setTotal(informationPage.getTotal());
         return infoPageInfo;
     }
