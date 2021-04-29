@@ -1,6 +1,7 @@
 package com.red.controller;
 
 import com.red.entity.Information;
+import com.red.entity.InformationPageInfo;
 import com.red.entity.InformationRecommend;
 import com.red.service.impl.InformationServiceImpl;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -20,6 +21,11 @@ public class InformationController {
     @RequestMapping("/getAllInformation")
     public List<Information> getAllInformation() {
         return iService.getAllInformation();
+    }
+
+    @RequestMapping("/getSomeInforByPage/{page}")
+    public InformationPageInfo getInSomeformationByPage(@PathVariable("page")Integer page) {
+        return iService.getInformationByPage(page);
     }
 
     //根据资讯类型获取资讯

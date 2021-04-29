@@ -1,10 +1,14 @@
 package com.red.service.impl;
 
+import com.baomidou.mybatisplus.core.conditions.query.QueryWrapper;
+import com.baomidou.mybatisplus.extension.plugins.pagination.Page;
 import com.red.dao.InformationMapper;
 import com.red.dao.InformationRecommendMapper;
 import com.red.entity.Information;
+import com.red.entity.InformationPageInfo;
 import com.red.entity.InformationRecommend;
 import com.red.service.InformationService;
+import com.sun.org.apache.xerces.internal.util.EntityResolverWrapper;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
@@ -24,6 +28,18 @@ public class InformationServiceImpl implements InformationService {
     @Override
     public List<Information> getAllInformation() {
         return iMapper.selectList(null);
+    }
+
+    //查询相关页码的相应数量的资讯
+    @Override
+    public InformationPageInfo getInformationByPage(Integer page) {
+        Page<Information> informationPage = iMapper.selectPage(new Page<>(page, 8), null);
+        InformationPageInfo infoPageInfo = new InformationPageInfo();
+        infoPageInfo.setCurrent(page);
+        infoPageInfo.setInfoList(informationPage.getRecords());
+        infoPageInfo.setSize(8);
+        infoPageInfo.setTotal(informationPage.getTotal());
+        return infoPageInfo;
     }
 
     @Override
