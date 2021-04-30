@@ -2,6 +2,7 @@ package com.red.service.impl;
 
 import com.baomidou.mybatisplus.core.conditions.query.QueryWrapper;
 import com.baomidou.mybatisplus.extension.plugins.pagination.Page;
+import com.baomidou.mybatisplus.extension.service.IService;
 import com.red.dao.InformationMapper;
 import com.red.dao.InformationRecommendMapper;
 import com.red.entity.Information;
@@ -24,6 +25,11 @@ public class InformationServiceImpl implements InformationService {
     private InformationMapper iMapper;
     @Autowired
     private InformationRecommendMapper irMapper;
+
+    @Override
+    public Information getInfoById(Integer id) {
+        return iMapper.selectById(id);
+    }
 
     @Override
     public List<Information> getAllInformation() {

@@ -20,6 +20,12 @@ public class InformationController {
     @Autowired
     private InformationServiceImpl iService;
 
+    //根据id获取资讯信息
+    @RequestMapping("getInfoById/{id}")
+    public Information getInfoById(@PathVariable("id")Integer id) {
+        return iService.getInfoById(id);
+    }
+
     //获取所有资讯
     @RequestMapping("/getAllInformation")
     public List<Information> getAllInformation() {

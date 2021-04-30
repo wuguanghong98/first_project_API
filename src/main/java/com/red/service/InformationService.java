@@ -6,6 +6,10 @@ import com.red.entity.InformationPageInfo;
 import java.util.List;
 
 public interface InformationService {
+
+    //根据id获取资讯信息
+    public Information getInfoById(Integer id);
+
     //获得所有资讯
     public List<Information> getAllInformation();
 

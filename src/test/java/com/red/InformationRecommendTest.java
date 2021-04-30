@@ -23,5 +23,11 @@ public class InformationRecommendTest {
         }
     }
 
+    //根据id获取资讯信息测试
+    @Test
+    public void getInfoByIdTest() {
+        System.out.println(iService.getInfoById(71).toString());
+    }
+
 
 }
