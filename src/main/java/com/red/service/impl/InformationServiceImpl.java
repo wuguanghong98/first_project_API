@@ -32,9 +32,13 @@ public class InformationServiceImpl implements InformationService {
 
     //查询相关页码的相应数量的资讯
     @Override
-    public InformationPageInfo getInformationByPage(Integer page,Integer size) {
+    public InformationPageInfo getInformationByPage(Integer page,Integer size,Integer type) {
+        QueryWrapper<Information> queryWrapper = new QueryWrapper<>();
+        if(!type.equals(0)){
+            queryWrapper.eq("infomationtype",type);
+        }
         Page<Information> informationPage = iMapper.selectPage(
-                new Page<>(page, size), null
+                new Page<>(page, size), queryWrapper
         );
         InformationPageInfo infoPageInfo = new InformationPageInfo();
         infoPageInfo.setCurrent(page);

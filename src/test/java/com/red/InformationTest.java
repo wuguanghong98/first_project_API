@@ -13,7 +13,7 @@ public class InformationTest {
 
     @Test
     public void getInformationByPageTest() {
-        InformationPageInfo infoPageInfo = iService.getInformationByPage(2,6);
+        InformationPageInfo infoPageInfo = iService.getInformationByPage(2,6,0);
         System.out.println(infoPageInfo.toString());
     }
 

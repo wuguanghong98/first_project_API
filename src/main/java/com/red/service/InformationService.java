@@ -9,8 +9,8 @@ public interface InformationService {
     //获得所有资讯
     public List<Information> getAllInformation();
 
-    //查询相关页码的相应数量的资讯
-    public InformationPageInfo getInformationByPage(Integer page,Integer size);
+    //查询当前页码,页数，资讯类型获取相应数量的资讯
+    public InformationPageInfo getInformationByPage(Integer page,Integer size,Integer type);
 
     //根据类型不同获取不同的资讯
     public List<Information> getInformationByType(Integer type);

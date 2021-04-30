@@ -26,12 +26,13 @@ public class InformationController {
         return iService.getAllInformation();
     }
 
-    //通过页码获取当前页的资讯列表
+    //查询当前页码,页数，资讯类型获取相应数量的资讯
     @RequestMapping("/getSomeInforByPage")
     public InformationPageInfo getInSomeformationByPage(
             @RequestParam(value = "page", defaultValue = "1",required = true)Integer page,
-            @RequestParam(value = "size", defaultValue = "6",required = false) Integer size) {
-        return iService.getInformationByPage(page, size);
+            @RequestParam(value = "size", defaultValue = "6",required = false) Integer size,
+            @RequestParam(value = "type", defaultValue = "0",required = false)Integer type) {
+        return iService.getInformationByPage(page, size, type);
     }
 
     //根据资讯类型获取资讯
